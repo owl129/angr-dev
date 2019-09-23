@@ -251,7 +251,6 @@ function try_remote
 	URL=$1
 	debug "Trying to clone from $URL"
 	rm -f $CLONE_LOG
-	echo "git clone $GIT_OPTIONS $URL >> $CLONE_LOG 2>> $CLONE_LOG"
 	git clone $GIT_OPTIONS $URL >> $CLONE_LOG 2>> $CLONE_LOG
 	r=$?
 
@@ -292,7 +291,7 @@ function clone_repo
 		return 1
 	fi
         echo "cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -"
-        cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -
+        cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2=$hash}' | git reset --hard $hash && cd -
  	return 0
 }
 
