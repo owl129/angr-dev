@@ -291,8 +291,8 @@ function clone_repo
 		return 1
 	fi
         echo "cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -"
-	cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2}' && cd -
-        cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2=$hash}' | git reset --hard $hash && cd -
+	cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2=$hash}' && echo $hash && cd -
+        cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2=$hash}' && git reset --hard $hash && cd -
  	return 0
 }
 
