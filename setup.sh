@@ -251,6 +251,7 @@ function try_remote
 	URL=$1
 	debug "Trying to clone from $URL"
 	rm -f $CLONE_LOG
+	echo "git clone $GIT_OPTIONS $URL >> $CLONE_LOG 2>> $CLONE_LOG"
 	git clone $GIT_OPTIONS $URL >> $CLONE_LOG 2>> $CLONE_LOG
 	r=$?
 
@@ -290,8 +291,9 @@ function clone_repo
 		rm -f $CLONE_LOG
 		return 1
 	fi
-
-	return 0
+        echo "cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -"
+        cd $NAME && git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -
+ 	return 0
 }
 
 function install_wheels
