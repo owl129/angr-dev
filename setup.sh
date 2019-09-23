@@ -245,6 +245,7 @@ then
 	# older versions of pip will fail to process the --find-links arg silently
 	# pip install -U pip
 	easy_install -U pip
+	pip install setuptools -U
 fi
 
 function try_remote
@@ -324,7 +325,7 @@ function pip_install
         debug "pip-installing: $@."
         if ! pip install $PIP_OPTIONS -v $@ >>$OUTFILE 2>>$ERRFILE
         then
-            	error "pip failure ($@). Check $OUTFILE for details, or read it here:"
+            	error "pip failure ($PIP_OPTIONS -v $@). Check $OUTFILE for details, or read it here:"
             	exit 1
         fi
 }
