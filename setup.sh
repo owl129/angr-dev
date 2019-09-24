@@ -294,7 +294,7 @@ function clone_repo
 	fi
         echo "cd $NAME && git log --until=2018-06-11 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -"
         cd $NAME 
-	hash=`git log --until=2018-09-11 |sed -n '1p' |awk -F ' ' '{print $2}'`
+	hash=`git log --until=2018-06-11 |sed -n '1p' |awk -F ' ' '{print $2}'`
 	echo "hash: "$hash
 	git reset --hard $hash && cd -
  	return 0
