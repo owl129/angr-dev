@@ -292,9 +292,9 @@ function clone_repo
 		rm -f $CLONE_LOG
 		return 1
 	fi
-        echo "cd $NAME && git log --until=2018-06-11 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -"
+        echo "cd $NAME && git log --until=2018-02-22 |sed -n '1p' |awk -F ' ' '{print $2}' | git reset --hard && cd -"
         cd $NAME 
-	hash=`git log --until=2018-06-11 |sed -n '1p' |awk -F ' ' '{print $2}'`
+	hash=`git log --until=2018-02-22 |sed -n '1p' |awk -F ' ' '{print $2}'`
 	echo "hash: "$hash
 	git reset --hard $hash && cd -
  	return 0
